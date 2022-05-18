@@ -82,3 +82,56 @@ mean(tmp$pctUrban)
 
 tmp.asia <- subset(UN, region=='Asia')
 mean(tmp.asia$fertility)  
+
+
+## 정렬
+v1 <- c(1,7,6,8,4,2,3,9)
+sort(v1, decreasing = T)
+
+name <- c('정대일','강재구','신현석','홍길동')
+sort(name, decreasing = T)[1]
+
+idx <- order(name, decreasing = T)
+idx
+name[idx[1]]
+
+a <- c(1,2,3,4,5)
+b <- c(11,24,55,23,9)
+z <- rbind(a, b)
+str(z)
+colnames(z) <- c('C1','C2','C3','C4','C5')
+z[,1]
+
+## 데이터프레임 정렬
+iris
+sort(iris$Sepal.Length)
+
+sl.order <- order(iris$Sepal.Length)
+iris[sl.order,]
+iris.new <- iris[sl.order,] 
+iris.ag <- iris[order(iris$Species, iris$Petal.Length, 
+                      decreasing = T),]
+
+## LAB 고속도로 교통사고 데이터
+library(carData)
+str(Highway1)
+levels(Highway1$htype)
+
+Highway1[order(Highway1$rate, decreasing = T),]
+
+tmp <- Highway1[order(Highway1$len, decreasing = T), 'len']
+tmp
+sum(tmp[1:10])
+
+tmp.2 <- sort(Highway1$len, decreasing = T)
+tmp.2
+sum(tmp.2[1:10])
+
+tmp <- Highway1[order(Highway1$adt), c('adt','rate')]
+tmp
+tmp[1:10,]
+
+tmp <- Highway1[order(Highway1$slim, decreasing = T), 
+                c('len','adt','rate')]
+tmp
+tmp[1:5,]
